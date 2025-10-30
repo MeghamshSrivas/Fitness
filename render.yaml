@@ -6,10 +6,12 @@ services:
     startCommand: npm start --prefix backend
     plan: free
     envVars:
+      - key: NODE_VERSION
+        value: 20
       - key: MONGODB_URI
         sync: false
 
   - type: static
     name: fitness-frontend
-    buildCommand: npm ci --prefix frontend && npm run build --prefix frontend
+    buildCommand: npm ci --prefix frontend --include=dev && npm run build --prefix frontend
     staticPublishPath: frontend/dist/fitness-frontend
