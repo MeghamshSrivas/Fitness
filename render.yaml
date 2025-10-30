@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: fitness-backend
+    rootDir: backend
+    env: node
+    buildCommand: npm ci
+    startCommand: npm start
+    plan: free
+    envVars:
+      - key: MONGODB_URI
+        sync: false
+
+  - type: static
+    name: fitness-frontend
+    rootDir: frontend
+    buildCommand: npm ci && npm run build
+    staticPublishPath: frontend/dist/fitness-frontend
